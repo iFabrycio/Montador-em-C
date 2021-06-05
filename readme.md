@@ -1,9 +1,9 @@
-#Projeto de Montador em C
+# Projeto de Montador em C
 Este é um montador (Assembler) escrito em C que traduz alguns comandos MIPS para linguagem binária.
 
 Isto é um projeto de conclusão da disciplina de Organização e Arquitetura de Computadores I, ministrada pelo professor Max Santana Rolemberg Farias, da UNIVASF.
 
-##Instruções de Uso no linux(ou no WSL)
+## Instruções de Uso no linux(ou no WSL)
 As instruções de compilação não são diferentes da compilação padrão de um arquivo em C;
 
 Por mais que haja um arquivo compilado chamado ``assembler`` ou ``Assembler``, eu recomendo re-compilar para evitar possíveis transtornos usando o comando.
