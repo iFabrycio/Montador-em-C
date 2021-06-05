@@ -78,7 +78,7 @@ FILE * readFile(char *argv[0]){
 
   fp = fopen(argv[1], "r");
   if (!fp) {
-    printf("\n\nNão foi possível abrir o arquivo\n");
+   printf("\n\nNão foi possível abrir o arquivo\n");
     exit(0);
   }
 
@@ -158,7 +158,7 @@ int verifyVar(char *var){
   int i;
   for(i = 0; i < sizeof(registradores);i++){
     if(!strcmp(var, registradores[i])){
-      printf("~~~~ %s == %s\n", var, registradores[i]);
+     //printf("~~~~ %s == %s\n", var, registradores[i]);
       return 1;
     }
   }
@@ -202,7 +202,7 @@ int main(int argc, char *argv[]) {
 
   int i;
   while(fgets(linha, BUFFER, fp)){
-    printf("%s\n", linha);
+   //printf("%s\n", linha);
     sscanf(linha, "%[^#]s", linha);
     if(linha[0] =='#'){
       continue;
@@ -218,14 +218,14 @@ int main(int argc, char *argv[]) {
     }
     int type = verifyType(label);
 
-    printf("Instrucao do Tipo %c.\n\n", type == 1 ? 'R': type == 2 ? 'I': 'J');
+   //printf("Instrucao do Tipo %c.\n\n", type == 1 ? 'R': type == 2 ? 'I': 'J');
 
     
-    printf(">>%s\n", label);
-    printf(">>%s\n", command);
-    printf(">>%s\n", res1);
-    printf(">>%s\n", res2);
-    printf(">>%s\n\n", res3);
+   //printf(">>%s\n", label);
+   //printf(">>%s\n", command);
+   //printf(">>%s\n", res1);
+   //printf(">>%s\n", res2);
+   //printf(">>%s\n\n", res3);
 
     if(type == 1 && verifyVar(command) && verifyVar(res1) && verifyVar(res2)){
 
@@ -234,14 +234,14 @@ int main(int argc, char *argv[]) {
       // opcode
       strcat(word, &opcode_R[0]);
       word[0] = '0';
-      printf(" op added, word: %s\n\n", word);
+     //printf(" op added, word: %s\n\n", word);
 
       if(strcmp(label, "jr")){
         // rs
         for(offset = 0; offset <= sizeof(registradores); offset++){
         if(!strcmp(res1, registradores[offset])){
           strcat(word, registradores_num[offset]);
-          printf(" rs added, word: %s\n\n", word);
+         //printf(" rs added, word: %s\n\n", word);
 
           break;
         }
@@ -252,7 +252,7 @@ int main(int argc, char *argv[]) {
         for(offset = 0; offset <= sizeof(registradores); offset++){
         if(!strcmp(res2, registradores[offset])){
           strcat(word, registradores_num[offset]);
-          printf(" rt added, word: %s\n\n", word);
+         //printf(" rt added, word: %s\n\n", word);
 
           break;
           }
@@ -262,7 +262,7 @@ int main(int argc, char *argv[]) {
       for(offset = 0; offset <= sizeof(registradores); offset++){
         if(!strcmp(command, registradores[offset])){
           strcat(word, registradores_num[offset]);
-          printf(" rd added, word: %s\n\n", word);
+         //printf(" rd added, word: %s\n\n", word);
 
           break;
         }
@@ -270,11 +270,11 @@ int main(int argc, char *argv[]) {
 
       //Shamt
       strcat(word,"00000");
-      printf(" sh added, word: %s\n\n", word);
+     //printf(" sh added, word: %s\n\n", word);
       for(offset = 0; offset <= sizeof(instrucoes_R); offset++){
         if(!strcmp(label, instrucoes_R[offset])){
           strcat(word, funct_R[offset]);
-          printf(" ft added, word: %s\n\n", word);
+         //printf(" ft added, word: %s\n\n", word);
 
           break;
           }
@@ -283,7 +283,7 @@ int main(int argc, char *argv[]) {
         for(offset = 0; offset <= sizeof(instrucoes_R); offset++){
           if(!strcmp(command, registradores[offset])){
             strcat(word, registradores_num[offset]);
-            printf(" rs added, word: %s\n\n", word);
+           //printf(" rs added, word: %s\n\n", word);
             break;
           }
         }
@@ -292,9 +292,9 @@ int main(int argc, char *argv[]) {
       
 
 
-      printf(" pr ended, word: %s\n\n", word);
+     //printf(" pr ended, word: %s\n\n", word);
 
-      printf("formatted word:\n\n");
+     //printf("formatted word:\n\n");
       int k;
       for(k = 24; word[k] != '\0'; k++){
           fprintf(createdfp, "%c", word[k]);
@@ -364,12 +364,12 @@ int main(int argc, char *argv[]) {
           strcat(word, "101011");
         }
 
-        printf("%s\n", word);
+       //printf("%s\n", word);
         // rs
         for(offset = 0; offset <= sizeof(registradores); offset++){
           if(!strcmp(res1, registradores[offset])){
             strcat(word, registradores_num[offset]);
-            printf(" rs added, word: %s\n\n", word);
+           //printf(" rs added, word: %s\n\n", word);
 
             break;
           }
@@ -379,7 +379,7 @@ int main(int argc, char *argv[]) {
         for(offset = 0; offset <= sizeof(registradores); offset++){
           if(!strcmp(command, registradores[offset])){
             strcat(word, registradores_num[offset]);
-            printf(" rt added, word: %s\n\n", word);
+           //printf(" rt added, word: %s\n\n", word);
 
             break;
           }
@@ -394,11 +394,11 @@ int main(int argc, char *argv[]) {
         }
 
 
-        printf("imm/offset added, word: %s\n\n", word);
+       //printf("imm/offset added, word: %s\n\n", word);
 
-        printf(" pr ended, word: %s\n\n", word);
+       //printf(" pr ended, word: %s\n\n", word);
 
-        printf("formatted word:\n\n");
+       //printf("formatted word:\n\n");
         int k;
         for(k = 24; word[k] != '\0'; k++){
           fprintf(createdfp, "%c", word[k]);
@@ -436,9 +436,9 @@ int main(int argc, char *argv[]) {
       int k = atoi(command);
       strcat(word, decimal_to_binary_reduced_to(k, 26));
 
-      printf(" pr ended, word: %s\n\n", word);
+     //printf(" pr ended, word: %s\n\n", word);
 
-        printf("formatted word:\n\n");
+       //printf("formatted word:\n\n");
         
         for(k = 24; word[k] != '\0'; k++){
           fprintf(createdfp, "%c", word[k]);
